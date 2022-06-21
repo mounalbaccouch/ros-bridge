@@ -2,7 +2,7 @@
 <launch>
   <arg name="host" default="localhost"/>
   <arg name="port" default="2000"/>
-  <arg name="role_name" default="hero1"/>
+  <arg name="role_name" default="hero5"/>
   <arg name="scenario_runner_path"/>
   <arg name="wait_for_ego" default="True"/>
 

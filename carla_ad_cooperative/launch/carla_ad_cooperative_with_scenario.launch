@@ -1,7 +1,7 @@
 <!-- -->
 <launch>
   <!-- carla parameter -->
-  <arg name='host' default='134.206.154.73'/> <!-- host the carla server is running on -->
+  <arg name='host' default='localhost'/> <!-- host the carla server is running on -->
   <arg name='port' default='2000'/> <!-- port of the carla server -->
   <arg name="town" default="Town01"/> <!-- the carla town to load-->
   <arg name='timeout' default='10'/> <!-- the carla timeout for server communication -->
@@ -26,19 +26,25 @@
   </include>
   
   <include file="$(find carla_spawn_objects)/launch/carla_spawn_objects.launch">
-    <arg name="objects_definition_file" value='$(find carla_spawn_objects)/config/objects.json'/>
+    <arg name="objects_definition_file" value='$(find carla_spawn_objects)/config/objects_12.json'/>
     <arg name="spawn_point_ego_vehicle" default=""/>
     <arg name="spawn_sensors_only" default="false"/>
   </include>
   
+  <!-- Scenario Runner and an example scenario-->
+  <node pkg="rostopic" type="rostopic" name="publish_scenarios"
+    args="pub /carla/available_scenarios carla_ros_scenario_runner_types/CarlaScenarioList '{ 'scenarios':  
+      [
+        {
+          'name': 'FollowLeadingVehicle',
+          'scenario_file': '$(find carla_ad_cooperative)/config/FollowLeadingVehicle.xosc'
+        }
+      ]
+    }' -l"/>
+  
 <!-- ========================== VEHICULE 1 ======================= -->
 
-  <!-- Manual control -->
-  <!-- Visualize the ego vehicle (and support overriding the control) -->
-  <include file="$(find carla_manual_control)/launch/carla_manual_control.launch">
-    <arg name='role_name' value='ego_vehicle'/>
-  </include>
-  
+
   <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
   <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher.launch">
     <arg name='host' value='$(arg host)'/>
@@ -52,17 +58,6 @@
     <remap from="/carla/ego_vehicle/vehicle_control_cmd" to="/carla/ego_vehicle/vehicle_control_cmd_manual"/>
     <param name="role_name" value="ego_vehicle"/>
   </node>
-  
-  <!-- Scenario Runner and an example scenario-->
-  <node pkg="rostopic" type="rostopic" name="publish_scenarios"
-    args="pub /carla/available_scenarios carla_ros_scenario_runner_types/CarlaScenarioList '{ 'scenarios':  
-      [
-        {
-          'name': 'IntersectionCollisionAvoidance',
-          'scenario_file': '$(find carla_ad_cooperative)/config/IntersectionCollisionAvoidance.xosc'
-        }
-      ]
-    }' -l"/>
       
   <include file="$(find carla_ros_scenario_runner)/launch/carla_ros_scenario_runner.launch">
     <arg name='host' value='$(arg host)'/>
@@ -79,11 +74,6 @@
   
 <!-- ========================== VEHICULE 2 ======================= -->
   
-  <!-- Manual control -->
-  <!-- Visualize the ego vehicle (and support overriding the control) -->
-  <include file="$(find carla_manual_control)/launch/carla_manual_control_hero.launch">
-    <arg name='role_name' value='hero'/>
-  </include>
   
   <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
   <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher_hero.launch">
@@ -114,11 +104,37 @@
   
 <!-- ========================== VEHICULE 3 ======================= -->
   
-  <!-- Manual control -->
-  <!-- Visualize the ego vehicle (and support overriding the control) -->
-  <include file="$(find carla_manual_control)/launch/carla_manual_control_hero1.launch">
-    <arg name='role_name' value='hero1'/>
+
+  <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
+  <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher_hero0.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name='timeout' value='$(arg timeout)'/>
+    <arg name='role_name' value='hero0'/>
   </include>
+  
+  <!-- To be able to maneuver with rviz, this node converts twist to vehicle control commands -->
+  <node pkg="carla_twist_to_control" type="carla_twist_to_control.py" name="carla_twist_to_control_hero0">
+    <remap from="/carla/hero0/vehicle_control_cmd" to="/carla/hero0/vehicle_control_cmd_manual"/>
+    <param name="role_name" value="hero0"/>
+  </node>
+      
+  <include file="$(find carla_ros_scenario_runner)/launch/carla_ros_scenario_runner_hero0.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name="role_name" value="hero0"/>
+    <arg name="scenario_runner_path" value="$(arg scenario_runner_path)"/>
+    <arg name="wait_for_ego" value="True"/>
+  </include>
+  
+  <!-- Rviz visualization-->
+  <node pkg="rviz" type="rviz" name="rviz_hero0" args="-d $(find carla_ad_cooperative)/config/carla_ad_cooperative_hero0.rviz" required="true" output="screen">
+    <remap from="carla/hero0/spectator_pose" to="/carla/hero0/rgb_view/control/set_transform"/>
+  </node>
+
+  
+<!-- ========================== VEHICULE 4 ======================= -->
+  
 
   <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
   <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher_hero1.launch">
@@ -147,5 +163,275 @@
     <remap from="carla/hero1/spectator_pose" to="/carla/hero1/rgb_view/control/set_transform"/>
   </node>
   
+<!-- ========================== VEHICULE 5 ======================= -->
+  
+
+  <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
+  <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher_hero2.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name='timeout' value='$(arg timeout)'/>
+    <arg name='role_name' value='hero2'/>
+  </include>
+  
+  <!-- To be able to maneuver with rviz, this node converts twist to vehicle control commands -->
+  <node pkg="carla_twist_to_control" type="carla_twist_to_control.py" name="carla_twist_to_control_hero2">
+    <remap from="/carla/hero2/vehicle_control_cmd" to="/carla/hero2/vehicle_control_cmd_manual"/>
+    <param name="role_name" value="hero2"/>
+  </node>
+      
+  <include file="$(find carla_ros_scenario_runner)/launch/carla_ros_scenario_runner_hero2.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name="role_name" value="hero2"/>
+    <arg name="scenario_runner_path" value="$(arg scenario_runner_path)"/>
+    <arg name="wait_for_ego" value="True"/>
+  </include>
+  
+  <!-- Rviz visualization-->
+  <node pkg="rviz" type="rviz" name="rviz_hero2" args="-d $(find carla_ad_cooperative)/config/carla_ad_cooperative_hero2.rviz" required="true" output="screen">
+    <remap from="carla/hero2/spectator_pose" to="/carla/hero2/rgb_view/control/set_transform"/>
+  </node>
+
+<!-- ========================== VEHICULE 6 ======================= -->
+  
+
+  <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
+  <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher_hero3.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name='timeout' value='$(arg timeout)'/>
+    <arg name='role_name' value='hero3'/>
+  </include>
+  
+  <!-- To be able to maneuver with rviz, this node converts twist to vehicle control commands -->
+  <node pkg="carla_twist_to_control" type="carla_twist_to_control.py" name="carla_twist_to_control_hero3">
+    <remap from="/carla/hero3/vehicle_control_cmd" to="/carla/hero3/vehicle_control_cmd_manual"/>
+    <param name="role_name" value="hero3"/>
+  </node>
+      
+  <include file="$(find carla_ros_scenario_runner)/launch/carla_ros_scenario_runner_hero3.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name="role_name" value="hero3"/>
+    <arg name="scenario_runner_path" value="$(arg scenario_runner_path)"/>
+    <arg name="wait_for_ego" value="True"/>
+  </include>
+  
+  <!-- Rviz visualization-->
+  <node pkg="rviz" type="rviz" name="rviz_hero3" args="-d $(find carla_ad_cooperative)/config/carla_ad_cooperative_hero3.rviz" required="true" output="screen">
+    <remap from="carla/hero3/spectator_pose" to="/carla/hero3/rgb_view/control/set_transform"/>
+  </node>
+
+<!-- ========================== VEHICULE 7 ======================= -->
+  
+
+  <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
+  <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher_hero4.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name='timeout' value='$(arg timeout)'/>
+    <arg name='role_name' value='hero4'/>
+  </include>
+  
+  <!-- To be able to maneuver with rviz, this node converts twist to vehicle control commands -->
+  <node pkg="carla_twist_to_control" type="carla_twist_to_control.py" name="carla_twist_to_control_hero4">
+    <remap from="/carla/hero4/vehicle_control_cmd" to="/carla/hero4/vehicle_control_cmd_manual"/>
+    <param name="role_name" value="hero4"/>
+  </node>
+      
+  <include file="$(find carla_ros_scenario_runner)/launch/carla_ros_scenario_runner_hero4.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name="role_name" value="hero4"/>
+    <arg name="scenario_runner_path" value="$(arg scenario_runner_path)"/>
+    <arg name="wait_for_ego" value="True"/>
+  </include>
+  
+  <!-- Rviz visualization-->
+  <node pkg="rviz" type="rviz" name="rviz_hero4" args="-d $(find carla_ad_cooperative)/config/carla_ad_cooperative_hero4.rviz" required="true" output="screen">
+    <remap from="carla/hero4/spectator_pose" to="/carla/hero4/rgb_view/control/set_transform"/>
+  </node>
+  
+<!-- ========================== VEHICULE 8 ======================= -->
+  
+
+  <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
+  <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher_hero5.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name='timeout' value='$(arg timeout)'/>
+    <arg name='role_name' value='hero5'/>
+  </include>
+  
+  <!-- To be able to maneuver with rviz, this node converts twist to vehicle control commands -->
+  <node pkg="carla_twist_to_control" type="carla_twist_to_control.py" name="carla_twist_to_control_hero5">
+    <remap from="/carla/hero5/vehicle_control_cmd" to="/carla/hero5/vehicle_control_cmd_manual"/>
+    <param name="role_name" value="hero5"/>
+  </node>
+      
+  <include file="$(find carla_ros_scenario_runner)/launch/carla_ros_scenario_runner_hero5.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name="role_name" value="hero5"/>
+    <arg name="scenario_runner_path" value="$(arg scenario_runner_path)"/>
+    <arg name="wait_for_ego" value="True"/>
+  </include>
+  
+  <!-- Rviz visualization-->
+  <node pkg="rviz" type="rviz" name="rviz_hero5" args="-d $(find carla_ad_cooperative)/config/carla_ad_cooperative_hero5.rviz" required="true" output="screen">
+    <remap from="carla/hero5/spectator_pose" to="/carla/hero5/rgb_view/control/set_transform"/>
+  </node>
+
+<!-- ========================== VEHICULE 9 ======================= -->
+  
+
+  <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
+  <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher_hero6.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name='timeout' value='$(arg timeout)'/>
+    <arg name='role_name' value='hero6'/>
+  </include>
+  
+  <!-- To be able to maneuver with rviz, this node converts twist to vehicle control commands -->
+  <node pkg="carla_twist_to_control" type="carla_twist_to_control.py" name="carla_twist_to_control_hero6">
+    <remap from="/carla/hero6/vehicle_control_cmd" to="/carla/hero6/vehicle_control_cmd_manual"/>
+    <param name="role_name" value="hero6"/>
+  </node>
+      
+  <include file="$(find carla_ros_scenario_runner)/launch/carla_ros_scenario_runner_hero6.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name="role_name" value="hero6"/>
+    <arg name="scenario_runner_path" value="$(arg scenario_runner_path)"/>
+    <arg name="wait_for_ego" value="True"/>
+  </include>
+  
+  <!-- Rviz visualization-->
+  <node pkg="rviz" type="rviz" name="rviz_hero6" args="-d $(find carla_ad_cooperative)/config/carla_ad_cooperative_hero6.rviz" required="true" output="screen">
+    <remap from="carla/hero6/spectator_pose" to="/carla/hero6/rgb_view/control/set_transform"/>
+  </node>
+  
+<!-- ========================== VEHICULE 10 ======================= -->
+  
+
+  <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
+  <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher_hero7.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name='timeout' value='$(arg timeout)'/>
+    <arg name='role_name' value='hero7'/>
+  </include>
+  
+  <!-- To be able to maneuver with rviz, this node converts twist to vehicle control commands -->
+  <node pkg="carla_twist_to_control" type="carla_twist_to_control.py" name="carla_twist_to_control_hero7">
+    <remap from="/carla/hero7/vehicle_control_cmd" to="/carla/hero7/vehicle_control_cmd_manual"/>
+    <param name="role_name" value="hero7"/>
+  </node>
+      
+  <include file="$(find carla_ros_scenario_runner)/launch/carla_ros_scenario_runner_hero7.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name="role_name" value="hero7"/>
+    <arg name="scenario_runner_path" value="$(arg scenario_runner_path)"/>
+    <arg name="wait_for_ego" value="True"/>
+  </include>
+  
+  <!-- Rviz visualization-->
+  <node pkg="rviz" type="rviz" name="rviz_hero7" args="-d $(find carla_ad_cooperative)/config/carla_ad_cooperative_hero7.rviz" required="true" output="screen">
+    <remap from="carla/hero7/spectator_pose" to="/carla/hero7/rgb_view/control/set_transform"/>
+  </node>
+  
+<!-- ========================== VEHICULE 11 ======================= -->
+  
+
+  <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
+  <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher_hero8.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name='timeout' value='$(arg timeout)'/>
+    <arg name='role_name' value='hero8'/>
+  </include>
+  
+  <!-- To be able to maneuver with rviz, this node converts twist to vehicle control commands -->
+  <node pkg="carla_twist_to_control" type="carla_twist_to_control.py" name="carla_twist_to_control_hero8">
+    <remap from="/carla/hero8/vehicle_control_cmd" to="/carla/hero8/vehicle_control_cmd_manual"/>
+    <param name="role_name" value="hero8"/>
+  </node>
+      
+  <include file="$(find carla_ros_scenario_runner)/launch/carla_ros_scenario_runner_hero8.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name="role_name" value="hero8"/>
+    <arg name="scenario_runner_path" value="$(arg scenario_runner_path)"/>
+    <arg name="wait_for_ego" value="True"/>
+  </include>
+  
+  <!-- Rviz visualization-->
+  <node pkg="rviz" type="rviz" name="rviz_hero8" args="-d $(find carla_ad_cooperative)/config/carla_ad_cooperative_hero8.rviz" required="true" output="screen">
+    <remap from="carla/hero8/spectator_pose" to="/carla/hero8/rgb_view/control/set_transform"/>
+  </node>
+
+<!-- ========================== VEHICULE 12 ======================= -->
+  
+
+  <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
+  <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher_hero9.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name='timeout' value='$(arg timeout)'/>
+    <arg name='role_name' value='hero9'/>
+  </include>
+  
+  <!-- To be able to maneuver with rviz, this node converts twist to vehicle control commands -->
+  <node pkg="carla_twist_to_control" type="carla_twist_to_control.py" name="carla_twist_to_control_hero9">
+    <remap from="/carla/hero9/vehicle_control_cmd" to="/carla/hero9/vehicle_control_cmd_manual"/>
+    <param name="role_name" value="hero9"/>
+  </node>
+      
+  <include file="$(find carla_ros_scenario_runner)/launch/carla_ros_scenario_runner_hero9.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name="role_name" value="hero9"/>
+    <arg name="scenario_runner_path" value="$(arg scenario_runner_path)"/>
+    <arg name="wait_for_ego" value="True"/>
+  </include>
+  
+  <!-- Rviz visualization-->
+  <node pkg="rviz" type="rviz" name="rviz_hero9" args="-d $(find carla_ad_cooperative)/config/carla_ad_cooperative_hero9.rviz" required="true" output="screen">
+    <remap from="carla/hero9/spectator_pose" to="/carla/hero9/rgb_view/control/set_transform"/>
+  </node>
+ 
+<!-- ========================== VEHICULE 13 ======================= -->
+  
+<?ignore
+  <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
+  <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher_heroo.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name='timeout' value='$(arg timeout)'/>
+    <arg name='role_name' value='heroo'/>
+  </include>
+  
+  <!-- To be able to maneuver with rviz, this node converts twist to vehicle control commands -->
+  <node pkg="carla_twist_to_control" type="carla_twist_to_control.py" name="carla_twist_to_control_heroo">
+    <remap from="/carla/heroo/vehicle_control_cmd" to="/carla/heroo/vehicle_control_cmd_manual"/>
+    <param name="role_name" value="heroo"/>
+  </node>
+      
+  <include file="$(find carla_ros_scenario_runner)/launch/carla_ros_scenario_runner_heroo.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name="role_name" value="heroo"/>
+    <arg name="scenario_runner_path" value="$(arg scenario_runner_path)"/>
+    <arg name="wait_for_ego" value="True"/>
+  </include>
+  
+  <!-- Rviz visualization-->
+  <node pkg="rviz" type="rviz" name="rviz_heroo" args="-d $(find carla_ad_cooperative)/config/carla_ad_cooperative_heroo.rviz" required="true" output="screen">
+    <remap from="carla/heroo/spectator_pose" to="/carla/heroo/rgb_view/control/set_transform"/>
+  </node>
+?>
 
 </launch>

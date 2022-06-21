@@ -47,6 +47,24 @@
         </Properties>
       </Vehicle>
     </ScenarioObject>
+    <ScenarioObject name="hero0">
+      <Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="10.0" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="ego_vehicle"/>
+          <Property name="color" value="0,0,255"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
     <ScenarioObject name="hero1">
       <Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
         <ParameterDeclarations/>
@@ -65,6 +83,150 @@
         </Properties>
       </Vehicle>
     </ScenarioObject>
+    <ScenarioObject name="hero2">
+      <Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="10.0" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="ego_vehicle"/>
+          <Property name="color" value="0,0,255"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>    
+     <ScenarioObject name="hero3">
+      <Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="10.0" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="ego_vehicle"/>
+          <Property name="color" value="0,0,255"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>  
+    <ScenarioObject name="hero4">
+      <Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="10.0" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="ego_vehicle"/>
+          <Property name="color" value="0,0,255"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject> 
+    <ScenarioObject name="hero5">
+      <Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="10.0" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="ego_vehicle"/>
+          <Property name="color" value="0,0,255"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
+    <ScenarioObject name="hero6">
+      <Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="10.0" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="ego_vehicle"/>
+          <Property name="color" value="0,0,255"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
+    <ScenarioObject name="hero7">
+      <Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="10.0" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="ego_vehicle"/>
+          <Property name="color" value="0,0,255"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
+    <ScenarioObject name="hero8">
+      <Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="10.0" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="ego_vehicle"/>
+          <Property name="color" value="0,0,255"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
+    <ScenarioObject name="hero9">
+      <Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="10.0" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="ego_vehicle"/>
+          <Property name="color" value="0,0,255"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>   
     <ScenarioObject name="adversary">
       <Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
         <ParameterDeclarations/>
@@ -84,6 +246,7 @@
       </Vehicle>
     </ScenarioObject>
   </Entities>
+   
   <Storyboard>
     <Init>
       <Actions>
@@ -104,7 +267,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="150" y="133" z="0" h="0"/>
+                <WorldPosition x="170" y="133" z="0" h="0"/>
               </Position>
             </TeleportAction>
           </PrivateAction>          
@@ -149,16 +312,44 @@
             </TeleportAction>
           </PrivateAction>
         </Private>
+        
         <Private entityRef="hero">
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="170" y="133" z="0" h="0"/>
+                <WorldPosition x="160" y="133" z="0" h="0"/>
               </Position>
             </TeleportAction>
           </PrivateAction>
-        </Private>
+        </Private>  
+        
+        
+              
+        <Private entityRef="hero0">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="150" y="133" z="0" h="0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>  
+        
+        
+              
         <Private entityRef="hero1">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="140" y="133" z="0" h="0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>  
+                
+        
+              
+        <Private entityRef="hero2">
           <PrivateAction>
             <TeleportAction>
               <Position>
@@ -166,7 +357,94 @@
               </Position>
             </TeleportAction>
           </PrivateAction>
-        </Private>
+        </Private>  
+                
+        
+              
+        <Private entityRef="hero3">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="120" y="133" z="0" h="0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>    
+                
+        
+              
+        <Private entityRef="hero4">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="110" y="133" z="0" h="0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>     
+                
+        
+              
+        <Private entityRef="hero5">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="100" y="133" z="0" h="0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>  
+                
+        
+              
+        <Private entityRef="hero6">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="90" y="133" z="0" h="0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>    
+                
+        
+              
+        <Private entityRef="hero7">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="80" y="133" z="0" h="0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>   
+                
+        
+              
+        <Private entityRef="hero8">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="70" y="133" z="0" h="0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>  
+                
+        
+              
+        <Private entityRef="hero9">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="60" y="133" z="0" h="0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>  
+        
+        
+            
       </Actions>
     </Init>
     <Story name="MyStory">
@@ -195,6 +473,8 @@
                     <ByEntityCondition>
                       <TriggeringEntities triggeringEntitiesRule="any">
                         <EntityRef entityRef="ego_vehicle"/>
+                        <EntityRef entityRef="hero"/>
+                        <EntityRef entityRef="hero1"/>
                       </TriggeringEntities>
                       <EntityCondition>
                         <RelativeDistanceCondition entityRef="adversary" relativeDistanceType="cartesianDistance" value="40.0" freespace="false" rule="lessThan"/>
@@ -212,6 +492,8 @@
               <ByEntityCondition>
                 <TriggeringEntities triggeringEntitiesRule="any">
                   <EntityRef entityRef="ego_vehicle"/>
+                  <EntityRef entityRef="hero"/>
+                  <EntityRef entityRef="hero1"/>
                 </TriggeringEntities>
                 <EntityCondition>
                   <TraveledDistanceCondition value="1.0"/>
@@ -231,6 +513,8 @@
               <ByEntityCondition>
                 <TriggeringEntities triggeringEntitiesRule="any">
                   <EntityRef entityRef="ego_vehicle"/>
+                  <EntityRef entityRef="hero"/>
+                  <EntityRef entityRef="hero1"/>
                 </TriggeringEntities>
                 <EntityCondition>
                   <TraveledDistanceCondition value="100.0"/>
