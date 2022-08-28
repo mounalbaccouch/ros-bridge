@@ -19,6 +19,13 @@
 
   <!-- ===================================================== -->
 
+  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock /home/cristal/workspace/carla-ros-bridge/osm2oxdr/gnss-imu-odom-town01-26-08.bag -l">
+    <remap from="/carla/ego_vehicle/gnss" to="/gps/fix"/>
+    <remap from="/carla/ego_vehicle/imu" to="/imu/data"/>
+    <remap from="/carla/ego_vehicle/odom" to="/odometry/filtered"/>
+  </node>
+  <include file="$(find robot_localization)/launch/navsat_transform_template.launch"/> 
+
   <!-- Publish the target speed -->
   <node pkg="rostopic" type="rostopic" name="rostopic" args="pub /carla/$(arg role_name)/target_speed std_msgs/Float64 $(arg target_speed)"/>
   
