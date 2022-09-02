@@ -321,6 +321,26 @@
               </Position>
             </TeleportAction>
           </PrivateAction>
+          <PrivateAction>
+            <ControllerAction>
+                <AssignControllerAction>
+                    <Controller name="HeroAgent">
+                        <Properties>
+                            <Property name="launch" value="carla_ad_agent_hero.launch"/>
+                            <Property name="launch-package" value="carla_ad_agent"/>
+                        </Properties>
+                    </Controller>
+                </AssignControllerAction>
+                <OverrideControllerValueAction>
+                    <Throttle value="0" active="false" />
+                    <Brake value="0" active="false" />
+                    <Clutch value="0" active="false" />
+                    <ParkingBrake value="0" active="false" />
+                    <SteeringWheel value="0" active="false" />
+                    <Gear number="0" active="false" />
+                </OverrideControllerValueAction>
+            </ControllerAction>
+          </PrivateAction>
         </Private>  
         
         
@@ -332,6 +352,26 @@
                 <WorldPosition x="150" y="133" z="0" h="0"/>
               </Position>
             </TeleportAction>
+          </PrivateAction>
+          <PrivateAction>
+            <ControllerAction>
+                <AssignControllerAction>
+                    <Controller name="Hero0Agent">
+                        <Properties>
+                            <Property name="launch" value="carla_ad_agent_hero0.launch"/>
+                            <Property name="launch-package" value="carla_ad_agent"/>
+                        </Properties>
+                    </Controller>
+                </AssignControllerAction>
+                <OverrideControllerValueAction>
+                    <Throttle value="0" active="false" />
+                    <Brake value="0" active="false" />
+                    <Clutch value="0" active="false" />
+                    <ParkingBrake value="0" active="false" />
+                    <SteeringWheel value="0" active="false" />
+                    <Gear number="0" active="false" />
+                </OverrideControllerValueAction>
+            </ControllerAction>
           </PrivateAction>
         </Private>  
         
@@ -345,6 +385,26 @@
               </Position>
             </TeleportAction>
           </PrivateAction>
+          <PrivateAction>
+            <ControllerAction>
+                <AssignControllerAction>
+                    <Controller name="Hero1Agent">
+                        <Properties>
+                            <Property name="launch" value="carla_ad_agent_hero1.launch"/>
+                            <Property name="launch-package" value="carla_ad_agent"/>
+                        </Properties>
+                    </Controller>
+                </AssignControllerAction>
+                <OverrideControllerValueAction>
+                    <Throttle value="0" active="false" />
+                    <Brake value="0" active="false" />
+                    <Clutch value="0" active="false" />
+                    <ParkingBrake value="0" active="false" />
+                    <SteeringWheel value="0" active="false" />
+                    <Gear number="0" active="false" />
+                </OverrideControllerValueAction>
+            </ControllerAction>
+          </PrivateAction>
         </Private>  
                 
         
@@ -356,6 +416,26 @@
                 <WorldPosition x="130" y="133" z="0" h="0"/>
               </Position>
             </TeleportAction>
+          </PrivateAction>
+          <PrivateAction>
+            <ControllerAction>
+                <AssignControllerAction>
+                    <Controller name="Hero2Agent">
+                        <Properties>
+                            <Property name="launch" value="carla_ad_agent_hero2.launch"/>
+                            <Property name="launch-package" value="carla_ad_agent"/>
+                        </Properties>
+                    </Controller>
+                </AssignControllerAction>
+                <OverrideControllerValueAction>
+                    <Throttle value="0" active="false" />
+                    <Brake value="0" active="false" />
+                    <Clutch value="0" active="false" />
+                    <ParkingBrake value="0" active="false" />
+                    <SteeringWheel value="0" active="false" />
+                    <Gear number="0" active="false" />
+                </OverrideControllerValueAction>
+            </ControllerAction>
           </PrivateAction>
         </Private>  
                 
@@ -369,6 +449,26 @@
               </Position>
             </TeleportAction>
           </PrivateAction>
+          <PrivateAction>
+            <ControllerAction>
+                <AssignControllerAction>
+                    <Controller name="Hero3Agent">
+                        <Properties>
+                            <Property name="launch" value="carla_ad_agent_hero3.launch"/>
+                            <Property name="launch-package" value="carla_ad_agent"/>
+                        </Properties>
+                    </Controller>
+                </AssignControllerAction>
+                <OverrideControllerValueAction>
+                    <Throttle value="0" active="false" />
+                    <Brake value="0" active="false" />
+                    <Clutch value="0" active="false" />
+                    <ParkingBrake value="0" active="false" />
+                    <SteeringWheel value="0" active="false" />
+                    <Gear number="0" active="false" />
+                </OverrideControllerValueAction>
+            </ControllerAction>
+          </PrivateAction>
         </Private>    
                 
         
@@ -380,6 +480,26 @@
                 <WorldPosition x="110" y="133" z="0" h="0"/>
               </Position>
             </TeleportAction>
+          </PrivateAction>
+          <PrivateAction>
+            <ControllerAction>
+                <AssignControllerAction>
+                    <Controller name="Hero4Agent">
+                        <Properties>
+                            <Property name="launch" value="carla_ad_agent_hero4.launch"/>
+                            <Property name="launch-package" value="carla_ad_agent"/>
+                        </Properties>
+                    </Controller>
+                </AssignControllerAction>
+                <OverrideControllerValueAction>
+                    <Throttle value="0" active="false" />
+                    <Brake value="0" active="false" />
+                    <Clutch value="0" active="false" />
+                    <ParkingBrake value="0" active="false" />
+                    <SteeringWheel value="0" active="false" />
+                    <Gear number="0" active="false" />
+                </OverrideControllerValueAction>
+            </ControllerAction>
           </PrivateAction>
         </Private>     
                 
@@ -393,6 +513,26 @@
               </Position>
             </TeleportAction>
           </PrivateAction>
+          <PrivateAction>
+            <ControllerAction>
+                <AssignControllerAction>
+                    <Controller name="Hero5Agent">
+                        <Properties>
+                            <Property name="launch" value="carla_ad_agent_hero5.launch"/>
+                            <Property name="launch-package" value="carla_ad_agent"/>
+                        </Properties>
+                    </Controller>
+                </AssignControllerAction>
+                <OverrideControllerValueAction>
+                    <Throttle value="0" active="false" />
+                    <Brake value="0" active="false" />
+                    <Clutch value="0" active="false" />
+                    <ParkingBrake value="0" active="false" />
+                    <SteeringWheel value="0" active="false" />
+                    <Gear number="0" active="false" />
+                </OverrideControllerValueAction>
+            </ControllerAction>
+          </PrivateAction>
         </Private>  
                 
         
@@ -404,6 +544,26 @@
                 <WorldPosition x="90" y="133" z="0" h="0"/>
               </Position>
             </TeleportAction>
+          </PrivateAction>
+          <PrivateAction>
+            <ControllerAction>
+                <AssignControllerAction>
+                    <Controller name="Hero6Agent">
+                        <Properties>
+                            <Property name="launch" value="carla_ad_agent_hero6.launch"/>
+                            <Property name="launch-package" value="carla_ad_agent"/>
+                        </Properties>
+                    </Controller>
+                </AssignControllerAction>
+                <OverrideControllerValueAction>
+                    <Throttle value="0" active="false" />
+                    <Brake value="0" active="false" />
+                    <Clutch value="0" active="false" />
+                    <ParkingBrake value="0" active="false" />
+                    <SteeringWheel value="0" active="false" />
+                    <Gear number="0" active="false" />
+                </OverrideControllerValueAction>
+            </ControllerAction>
           </PrivateAction>
         </Private>    
                 
@@ -417,6 +577,26 @@
               </Position>
             </TeleportAction>
           </PrivateAction>
+          <PrivateAction>
+            <ControllerAction>
+                <AssignControllerAction>
+                    <Controller name="Hero7Agent">
+                        <Properties>
+                            <Property name="launch" value="carla_ad_agent_hero7.launch"/>
+                            <Property name="launch-package" value="carla_ad_agent"/>
+                        </Properties>
+                    </Controller>
+                </AssignControllerAction>
+                <OverrideControllerValueAction>
+                    <Throttle value="0" active="false" />
+                    <Brake value="0" active="false" />
+                    <Clutch value="0" active="false" />
+                    <ParkingBrake value="0" active="false" />
+                    <SteeringWheel value="0" active="false" />
+                    <Gear number="0" active="false" />
+                </OverrideControllerValueAction>
+            </ControllerAction>
+          </PrivateAction>
         </Private>   
                 
         
@@ -429,6 +609,26 @@
               </Position>
             </TeleportAction>
           </PrivateAction>
+          <PrivateAction>
+            <ControllerAction>
+                <AssignControllerAction>
+                    <Controller name="Hero8Agent">
+                        <Properties>
+                            <Property name="launch" value="carla_ad_agent_hero8.launch"/>
+                            <Property name="launch-package" value="carla_ad_agent"/>
+                        </Properties>
+                    </Controller>
+                </AssignControllerAction>
+                <OverrideControllerValueAction>
+                    <Throttle value="0" active="false" />
+                    <Brake value="0" active="false" />
+                    <Clutch value="0" active="false" />
+                    <ParkingBrake value="0" active="false" />
+                    <SteeringWheel value="0" active="false" />
+                    <Gear number="0" active="false" />
+                </OverrideControllerValueAction>
+            </ControllerAction>
+          </PrivateAction>
         </Private>  
                 
         
@@ -440,6 +640,26 @@
                 <WorldPosition x="60" y="133" z="0" h="0"/>
               </Position>
             </TeleportAction>
+          </PrivateAction>
+          <PrivateAction>
+            <ControllerAction>
+                <AssignControllerAction>
+                    <Controller name="Hero9Agent">
+                        <Properties>
+                            <Property name="launch" value="carla_ad_agent_hero9.launch"/>
+                            <Property name="launch-package" value="carla_ad_agent"/>
+                        </Properties>
+                    </Controller>
+                </AssignControllerAction>
+                <OverrideControllerValueAction>
+                    <Throttle value="0" active="false" />
+                    <Brake value="0" active="false" />
+                    <Clutch value="0" active="false" />
+                    <ParkingBrake value="0" active="false" />
+                    <SteeringWheel value="0" active="false" />
+                    <Gear number="0" active="false" />
+                </OverrideControllerValueAction>
+            </ControllerAction>
           </PrivateAction>
         </Private>  
         
@@ -474,7 +694,16 @@
                       <TriggeringEntities triggeringEntitiesRule="any">
                         <EntityRef entityRef="ego_vehicle"/>
                         <EntityRef entityRef="hero"/>
+                        <EntityRef entityRef="hero0"/>
                         <EntityRef entityRef="hero1"/>
+                        <EntityRef entityRef="hero2"/>
+                        <EntityRef entityRef="hero3"/>
+                        <EntityRef entityRef="hero4"/>
+                        <EntityRef entityRef="hero5"/>
+                        <EntityRef entityRef="hero6"/>
+                        <EntityRef entityRef="hero7"/>
+                        <EntityRef entityRef="hero8"/>
+                        <EntityRef entityRef="hero9"/>
                       </TriggeringEntities>
                       <EntityCondition>
                         <RelativeDistanceCondition entityRef="adversary" relativeDistanceType="cartesianDistance" value="40.0" freespace="false" rule="lessThan"/>
@@ -493,7 +722,16 @@
                 <TriggeringEntities triggeringEntitiesRule="any">
                   <EntityRef entityRef="ego_vehicle"/>
                   <EntityRef entityRef="hero"/>
+                  <EntityRef entityRef="hero0"/>
                   <EntityRef entityRef="hero1"/>
+                  <EntityRef entityRef="hero2"/>
+                  <EntityRef entityRef="hero3"/>
+                  <EntityRef entityRef="hero4"/>
+                  <EntityRef entityRef="hero5"/>
+                  <EntityRef entityRef="hero6"/>
+                  <EntityRef entityRef="hero7"/>
+                  <EntityRef entityRef="hero8"/>
+                  <EntityRef entityRef="hero9"/>
                 </TriggeringEntities>
                 <EntityCondition>
                   <TraveledDistanceCondition value="1.0"/>
@@ -514,7 +752,16 @@
                 <TriggeringEntities triggeringEntitiesRule="any">
                   <EntityRef entityRef="ego_vehicle"/>
                   <EntityRef entityRef="hero"/>
+                  <EntityRef entityRef="hero0"/>
                   <EntityRef entityRef="hero1"/>
+                  <EntityRef entityRef="hero2"/>
+                  <EntityRef entityRef="hero3"/>
+                  <EntityRef entityRef="hero4"/>
+                  <EntityRef entityRef="hero5"/>
+                  <EntityRef entityRef="hero6"/>
+                  <EntityRef entityRef="hero7"/>
+                  <EntityRef entityRef="hero8"/>
+                  <EntityRef entityRef="hero9"/>
                 </TriggeringEntities>
                 <EntityCondition>
                   <TraveledDistanceCondition value="100.0"/>
