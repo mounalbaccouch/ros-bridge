@@ -9,9 +9,6 @@
   <arg name='synchronous_mode_wait_for_vehicle_control_command' default='False'/><!-- should the ros bridge wait for a vehicle control command before proceeding with the next tick -->
   <arg name='fixed_delta_seconds' default='0.05'/><!-- frequency of the carla ticks -->
   
-  <!--  -->
-  <arg name='control_id' default='control'/> 
-  
   <!-- scenario runner parameter -->
   <arg name='scenario_runner_path' default='$(env SCENARIO_RUNNER_PATH)'/><!-- path to scenario runner -->
 
@@ -29,7 +26,7 @@
   </include>
   
   <include file="$(find carla_spawn_objects)/launch/carla_spawn_objects.launch">
-    <arg name="objects_definition_file" value='$(find carla_spawn_objects)/config/objects.json'/>
+    <arg name="objects_definition_file" value='$(find carla_spawn_objects)/config/objects_2.json'/>
     <arg name="spawn_point_ego_vehicle" default=""/>
     <arg name="spawn_sensors_only" default="false"/>
   </include>
@@ -40,22 +37,13 @@
       [
         {
           'name': 'FollowLeadingVehicle',
-          'scenario_file': '$(find carla_ad_cooperative)/config/FollowLeadingVehicle.xosc'
+          'scenario_file': '$(find carla_ad_cooperative)/config/FollowLeadingVehicle_2.xosc'
         }
       ]
     }' -l"/>
- <?ignore
- <node pkg="rosbag" type="play" name="player" output="screen" args="--clock /home/cristal/workspace/carla-ros-bridge/catkin_ws/src/bags/only-gps-fix.bag"/>
- <remap from="/gps/fix" to="/carla/ego_vehicle/gnss"/>
- ?>
- 
+  
 <!-- ========================== VEHICULE 1 ======================= -->
 
-  <!-- Manual control -->
-  <!-- Visualize the ego vehicle (and support overriding the control) -->
-  <include file="$(find carla_manual_control)/launch/carla_manual_control.launch">
-    <arg name='role_name' value='ego_vehicle'/>
-  </include>
 
   <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
   <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher.launch">
@@ -83,10 +71,35 @@
   <node pkg="rviz" type="rviz" name="rviz_ego" args="-d $(find carla_ad_cooperative)/config/carla_ad_cooperative.rviz" required="true" output="screen">
     <remap from="carla/ego_vehicle/spectator_pose" to="/carla/ego_vehicle/rgb_view/control/set_transform"/>
   </node>
-
-  <!-- Provide control over initial position -->
-  <include file="$(find carla_spawn_objects)/launch/set_initial_pose.launch">
-    <param name='control_id' value='$(arg control_id)'/>
+  
+<!-- ========================== VEHICULE 2 ======================= -->
+  
+  
+  <!-- Provide a route and access to the CARLA waypoint API (required by carla_ad_agent) -->
+  <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher_hero.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name='timeout' value='$(arg timeout)'/>
+    <arg name='role_name' value='hero'/>
   </include>
+  
+  <!-- To be able to maneuver with rviz, this node converts twist to vehicle control commands -->
+  <node pkg="carla_twist_to_control" type="carla_twist_to_control.py" name="carla_twist_to_control_hero">
+    <remap from="/carla/hero/vehicle_control_cmd" to="/carla/hero/vehicle_control_cmd_manual"/>
+    <param name="role_name" value="hero"/>
+  </node>
+      
+  <include file="$(find carla_ros_scenario_runner)/launch/carla_ros_scenario_runner_hero.launch">
+    <arg name='host' value='$(arg host)'/>
+    <arg name='port' value='$(arg port)'/>
+    <arg name="role_name" value="hero"/>
+    <arg name="scenario_runner_path" value="$(arg scenario_runner_path)"/>
+    <arg name="wait_for_ego" value="True"/>
+  </include>
+
+  <!-- Rviz visualization-->
+  <node pkg="rviz" type="rviz" name="rviz_hero" args="-d $(find carla_ad_cooperative)/config/carla_ad_cooperative_hero.rviz" required="true" output="screen">
+    <remap from="carla/hero/spectator_pose" to="/carla/hero/rgb_view/control/set_transform"/>
+  </node>
   
 </launch>
